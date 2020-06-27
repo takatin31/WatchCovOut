@@ -1,0 +1,2 @@
+rootProject.name='WatchCovOut_app'
+include ':app'
