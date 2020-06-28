@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="15dp"
+    android:paddingEnd="15dp"
+    tools:context=".CardActivity">
+
+    <ImageView
+        android:id="@+id/return_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp"
+        app:srcCompat="@drawable/ic_keyboard_arrow_left_black_24dp" />
+
+    <TextView
+        android:id="@+id/title1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/return_btn"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Verification"
+        android:textColor="#000000"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title1"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Please upload a picture of your National ID card in addition to number put on it"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/title2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtitle"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="ID Card Number"
+        android:textColor="#555555"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/id_number0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:imeOptions="actionNext"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/id_number9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:background="@drawable/box"
+            android:ems="1"
+            android:fontFamily="@font/roboto_medium"
+            android:inputType="numberDecimal"
+            android:maxLength="1"
+            android:paddingStart="2dp"
+            android:paddingTop="5dp"
+            android:paddingEnd="2dp"
+            android:paddingBottom="5dp"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/title3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layout"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/roboto_regular"
+        android:text="Upload your National ID Card here"
+        android:textColor="#555555"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/upload_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title3"
+        android:adjustViewBounds="true"
+        app:srcCompat="@drawable/upload_here" />
+
+    <Button
+        android:id="@+id/continue_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/green_button"
+        android:text="CONTINUE"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

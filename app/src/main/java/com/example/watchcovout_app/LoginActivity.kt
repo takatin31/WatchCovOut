@@ -3,18 +3,17 @@ package com.example.watchcovout_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_login.*
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
-        start_btn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+        facebook_login.setOnClickListener{
+            val intent = Intent(this, CardActivity::class.java)
             startActivity(intent)
-            finish()
         }
     }
 }
