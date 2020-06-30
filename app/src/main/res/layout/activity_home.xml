@@ -67,7 +67,7 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_weight="0.15"
-            android:src="@drawable/facrbook" />
+            android:src="@drawable/ic_account_circle" />
 
 
     </LinearLayout>

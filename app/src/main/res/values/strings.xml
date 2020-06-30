@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WatchCovOut_app</string>
+    <string name="facebook_app_id">2387427698223122</string>
+    <string name="fb_login_protocol_scheme">fb2387427698223122</string>
+    <string name="shared_pref">user_data</string>
+
 </resources>

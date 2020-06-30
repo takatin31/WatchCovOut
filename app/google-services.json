@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "767229305671",
+    "firebase_url": "https://watchcovout.firebaseio.com",
+    "project_id": "watchcovout",
+    "storage_bucket": "watchcovout.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767229305671:android:39921fa1fdf46ad2c86262",
+        "android_client_info": {
+          "package_name": "com.example.watchcovout_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767229305671-3k4mbh85n6pun6ecnb96pjf5jhcj45va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.watchcovout_app",
+            "certificate_hash": "be4517eddcec07926d21ed55979257cd89cc912f"
+          }
+        },
+        {
+          "client_id": "767229305671-o689i8g4h8834pl2g5nqerk5uel94mml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu5ttFDF5XFymrnuninY67mWbY2-1te-8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767229305671-o689i8g4h8834pl2g5nqerk5uel94mml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
