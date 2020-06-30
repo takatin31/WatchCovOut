@@ -12,6 +12,11 @@ class RoleActivity : AppCompatActivity() {
         setContentView(R.layout.activity_role)
 
         finish_btn.setOnClickListener {
+            val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
+            val editor = pref.edit()
+            editor.putBoolean("valid", true)
+            editor.commit()
+
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()

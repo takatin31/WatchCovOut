@@ -85,10 +85,16 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null){
-            auth.signOut()
-            /*val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-            finish()*/
+            val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
+            val isUserValid = pref.getBoolean("valid", false)
+
+            if (isUserValid){
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else{
+                auth.signOut()
+            }
         }
     }
 
