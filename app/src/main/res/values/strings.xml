@@ -3,5 +3,6 @@
     <string name="facebook_app_id">2387427698223122</string>
     <string name="fb_login_protocol_scheme">fb2387427698223122</string>
     <string name="shared_pref">user_data</string>
+    <string name="host">https://watchcovout-api.herokuapp.com</string>
 
 </resources>

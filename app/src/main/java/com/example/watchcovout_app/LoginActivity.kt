@@ -153,12 +153,10 @@ class LoginActivity : AppCompatActivity() {
                             }
                         }
                     }
-
-
+                    editor.putString("userUID", user!!.uid)
                     editor.commit()
 
                     val intent = Intent(this, CardActivity::class.java)
-                    intent.putExtra("UID", user!!.uid)
                     startActivity(intent)
                     finish()
 
@@ -197,10 +195,10 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }
 
+                    editor.putString("userUID", user!!.uid)
                     editor.commit()
 
                     val intent = Intent(this, CardActivity::class.java)
-                    intent.putExtra("UID", user!!.uid)
                     startActivity(intent)
                     finish()
 

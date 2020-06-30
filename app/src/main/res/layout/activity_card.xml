@@ -276,4 +276,15 @@
         android:background="@drawable/green_button"
         android:text="CONTINUE"
         android:textColor="@android:color/white" />
+
+    <ImageView
+        android:id="@+id/idImgView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_below="@id/upload_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        app:srcCompat="@drawable/icon" />
 </RelativeLayout>
