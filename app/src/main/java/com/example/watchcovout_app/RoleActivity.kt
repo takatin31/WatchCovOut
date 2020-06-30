@@ -3,7 +3,9 @@ package com.example.watchcovout_app
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.activity_role.*
+import kotlinx.android.synthetic.main.activity_role.return_btn
 
 class RoleActivity : AppCompatActivity() {
 
@@ -19,6 +21,10 @@ class RoleActivity : AppCompatActivity() {
 
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
+            finish()
+        }
+
+        return_btn.setOnClickListener {
             finish()
         }
     }

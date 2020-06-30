@@ -19,7 +19,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseUser
+import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.activity_login.*
+import org.json.JSONObject
 import java.util.*
 
 class LoginActivity : AppCompatActivity() {
@@ -115,6 +117,7 @@ class LoginActivity : AppCompatActivity() {
                 // Google Sign In was successful, authenticate with Firebase
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d("Log", "firebaseAuthWithGoogle:" + account.id)
+
                 val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
                 val editor = pref.edit()
                 editor.putString("token", account.idToken)
@@ -136,9 +139,22 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d("Log", "signInWithCredential:success")
                     val user = auth.currentUser
+
                     val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
                     val editor = pref.edit()
                     editor.putString("photoUrl", user!!.photoUrl.toString())
+
+                    user!!.getIdToken(false).addOnSuccessListener {
+                        if (it.claims.containsKey("roles")){
+                            val userServiceProvider = it.claims["roles"].toString()
+                            val userObject = JSONObject(userServiceProvider)
+                            if (userObject.has("SERVICE_PROVIDER")){
+                                editor.putBoolean("provider", userObject.getBoolean("SERVICE_PROVIDER"))
+                            }
+                        }
+                    }
+
+
                     editor.commit()
 
                     val intent = Intent(this, CardActivity::class.java)
@@ -170,6 +186,17 @@ class LoginActivity : AppCompatActivity() {
                     val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
                     val editor = pref.edit()
                     editor.putString("photoUrl", user!!.photoUrl.toString())
+
+                    user!!.getIdToken(false).addOnSuccessListener {
+                        if (it.claims.containsKey("roles")){
+                            val userServiceProvider = it.claims["roles"].toString()
+                            val userObject = JSONObject(userServiceProvider)
+                            if (userObject.has("SERVICE_PROVIDER")){
+                                editor.putBoolean("provider", userObject.getBoolean("SERVICE_PROVIDER"))
+                            }
+                        }
+                    }
+
                     editor.commit()
 
                     val intent = Intent(this, CardActivity::class.java)

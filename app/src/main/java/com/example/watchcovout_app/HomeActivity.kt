@@ -1,7 +1,9 @@
 package com.example.watchcovout_app
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.google.firebase.auth.FirebaseAuth
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -18,6 +20,12 @@ class HomeActivity : AppCompatActivity() {
             Picasso.get().load(userImgUrl).into(`userImageٍView`)
         }
 
+        `userImageٍView`.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
     }
 }
