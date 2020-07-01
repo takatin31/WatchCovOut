@@ -87,16 +87,17 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = auth.currentUser
         if (currentUser != null){
-            val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
-            val isUserValid = pref.getBoolean("valid", false)
 
-            if (isUserValid){
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
-            }else{
-                auth.signOut()
+            currentUser.getIdToken(false).addOnSuccessListener {
+                if (it.claims.containsKey("roles")){
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    auth.signOut()
+                }
             }
+
         }
     }
 
@@ -143,6 +144,7 @@ class LoginActivity : AppCompatActivity() {
                     val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
                     val editor = pref.edit()
                     editor.putString("photoUrl", user!!.photoUrl.toString())
+                    editor.putString("userUID", user!!.uid)
 
                     user!!.getIdToken(false).addOnSuccessListener {
                         if (it.claims.containsKey("roles")){
@@ -151,14 +153,19 @@ class LoginActivity : AppCompatActivity() {
                             if (userObject.has("SERVICE_PROVIDER")){
                                 editor.putBoolean("provider", userObject.getBoolean("SERVICE_PROVIDER"))
                             }
+                            editor.putBoolean("valid", true)
+                            editor.commit()
+
+                            val intent = Intent(this, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }else{
+                            editor.commit()
+                            val intent = Intent(this, CardActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
                     }
-                    editor.putString("userUID", user!!.uid)
-                    editor.commit()
-
-                    val intent = Intent(this, CardActivity::class.java)
-                    startActivity(intent)
-                    finish()
 
                 } else {
                     // If sign in fails, display a message to the user.
@@ -185,22 +192,31 @@ class LoginActivity : AppCompatActivity() {
                     val editor = pref.edit()
                     editor.putString("photoUrl", user!!.photoUrl.toString())
 
+
                     user!!.getIdToken(false).addOnSuccessListener {
+                        editor.putString("userUID", user!!.uid)
+
                         if (it.claims.containsKey("roles")){
+                            Log.i("claaaaims", it.claims["roles"].toString())
                             val userServiceProvider = it.claims["roles"].toString()
                             val userObject = JSONObject(userServiceProvider)
                             if (userObject.has("SERVICE_PROVIDER")){
                                 editor.putBoolean("provider", userObject.getBoolean("SERVICE_PROVIDER"))
                             }
+                            editor.putBoolean("valid", true)
+                            editor.commit()
+                            val intent = Intent(this, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }else{
+                            editor.commit()
+                            val intent = Intent(this, CardActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
                     }
 
-                    editor.putString("userUID", user!!.uid)
-                    editor.commit()
 
-                    val intent = Intent(this, CardActivity::class.java)
-                    startActivity(intent)
-                    finish()
 
                 } else {
                     // If sign in fails, display a message to the user.

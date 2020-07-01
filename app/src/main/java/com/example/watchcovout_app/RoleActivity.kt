@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.Volley
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_card.*
 import kotlinx.android.synthetic.main.activity_role.*
 import kotlinx.android.synthetic.main.activity_role.return_btn
@@ -84,18 +85,29 @@ class RoleActivity : AppCompatActivity() {
             postURL,
             Response.Listener {
                 Log.i("success", "comment posted succefully")
+                val resp = String(it.data)
+                val jsonResp = JSONObject(resp)
+                if (jsonResp.has("error")){
+                    Toast.makeText(this, "National ID Already exists", Toast.LENGTH_SHORT).show()
+                    FirebaseAuth.getInstance().signOut()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                    finish()
 
-                val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
-                val editor = pref.edit()
-                editor.putBoolean("valid", true)
-                editor.commit()
+                }else if (jsonResp.has("message")){
+                    val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
+                    val editor = pref.edit()
+                    editor.putBoolean("valid", true)
+                    editor.commit()
 
-                val intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
-                finish()
+                    val intent = Intent(this, HomeActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+
             },
             Response.ErrorListener {
-
+                Toast.makeText(this, "There were a problem", Toast.LENGTH_SHORT).show()
                 Log.i("error", "error while posting comment")
                 Log.i("error", it.toString())
             }
