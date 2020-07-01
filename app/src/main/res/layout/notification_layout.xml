@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardElevation="2dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layoutDirection="rtl"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/notificationSeenView"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@string/notification_example"
+            app:srcCompat="@drawable/circle_button" />
+
+        <TextView
+            android:id="@+id/notificationContentView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notificationTitleView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/notificationSeenView"
+            android:fontFamily="@font/almarai_regular"
+            android:text="@string/notification_example"
+            android:textColor="@color/darkblue"
+            android:textDirection="rtl"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/notificationTitleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@id/notificationDateView"
+            android:layout_toEndOf="@id/notificationSeenView"
+            android:contentDescription="@string/description"
+            android:fontFamily="@font/almarai_bold"
+            android:text="@string/notification_example"
+            android:textColor="@color/black"
+            android:textDirection="rtl"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/notificationDateView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@string/date_example"
+            android:textColor="@color/black"
+            android:textDirection="ltr" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

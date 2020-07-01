@@ -60,7 +60,7 @@
                 android:textSize="28sp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/overCrowdedBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/subtitle1"
@@ -115,7 +115,7 @@
                 android:textSize="28sp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/confirmCaseBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/subtitle2"
@@ -132,6 +132,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
         android:clickable="true"
         app:srcCompat="@drawable/ic_logout" />
 

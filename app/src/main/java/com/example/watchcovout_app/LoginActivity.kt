@@ -149,6 +149,7 @@ class LoginActivity : AppCompatActivity() {
                     user!!.getIdToken(false).addOnSuccessListener {
                         if (it.claims.containsKey("roles")){
                             val userServiceProvider = it.claims["roles"].toString()
+                            Log.i("claaaaims", it.claims["roles"].toString())
                             val userObject = JSONObject(userServiceProvider)
                             if (userObject.has("SERVICE_PROVIDER")){
                                 editor.putBoolean("provider", userObject.getBoolean("SERVICE_PROVIDER"))

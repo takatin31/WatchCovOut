@@ -35,10 +35,8 @@ class HomeActivity : AppCompatActivity() {
         }
 
         `userImageٍView`.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         button.setOnClickListener {
@@ -50,7 +48,6 @@ class HomeActivity : AppCompatActivity() {
             val transaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.frameLayout, contentFr)
             transaction.commit()
-
 
             continue_btn.setOnClickListener {
                 if (chosenPlace == null){
@@ -89,6 +86,11 @@ class HomeActivity : AppCompatActivity() {
                 }else{
                     Toast.makeText(this, "There were a problem please retry", Toast.LENGTH_SHORT).show()
                 }
+            }
+
+            notificationIconView.setOnClickListener {
+                val intent = Intent(this, NotificationActivity::class.java)
+                startActivity(intent)
             }
         }
 
@@ -141,7 +143,7 @@ class HomeActivity : AppCompatActivity() {
                 dataOutputStream.writeBytes(jsonUser.toString())
                 return byteArrayOutputStream.toByteArray()
             }
-/*
+            /*
             @Throws(AuthFailureError::class)
             override fun getHeaders(): MutableMap<String, String> {
                 val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)

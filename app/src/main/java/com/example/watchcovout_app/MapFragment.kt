@@ -50,6 +50,8 @@ class MapFragment : Fragment(), PermissionsListener {
     var features = arrayListOf<Feature>()
     private val PROPERTY_SELECTED = "selected"
     private val LAYER_ID = "places"
+    var isProvider : Boolean = false
+    var selectedPlace : LatLng? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -78,16 +80,19 @@ class MapFragment : Fragment(), PermissionsListener {
                 enableLocationComponent(it)
 
                 getPlaces(it)
-
-
             }
 
             mapboxMap.addOnMapClickListener{
                 Log.i("featurePnt", it.toString())
-                handleClickIcon(mapboxMap.projection.toScreenLocation(it))
+                val exist = handleClickIcon(mapboxMap.projection.toScreenLocation(it))
+                if (!exist && isProvider){
+                    selectedPlace = it
+
+                    addMarker(mapboxMap.style!!, it)
+                }
+                true
             }
         }
-
     }
 
     fun getPlaces(style: Style){
@@ -154,8 +159,6 @@ class MapFragment : Fragment(), PermissionsListener {
             Log.i("Check the URL %s", uriSyntaxException.message)
         }
 
-
-
         style.addLayer(
             SymbolLayer(LAYER_ID, LAYER_ID)
                 .withProperties(
@@ -165,6 +168,40 @@ class MapFragment : Fragment(), PermissionsListener {
                 )
         )
 
+    }
+
+    fun addMarker(style: Style, pos : LatLng){
+
+        style.removeLayer("new")
+        style.removeSource("new")
+
+        val geometry = Point.fromLngLat(pos.longitude, pos.latitude)
+        val feature : Feature = Feature.fromGeometry(geometry)
+        val newFeatures = arrayListOf<Feature>()
+        newFeatures.add(feature)
+
+        val features = FeatureCollection.fromFeatures(newFeatures)
+
+        Log.i("laaayer", features.toString())
+        try {
+            style.addSource(
+                GeoJsonSource(
+                    "new",
+                    features
+                )
+            )
+        } catch (uriSyntaxException: URISyntaxException) {
+            Log.i("Check the URL %s", uriSyntaxException.message)
+        }
+
+        style.addLayer(
+            SymbolLayer("new", "new")
+                .withProperties(
+                    PropertyFactory.iconImage("marker_icon"),
+                    iconAllowOverlap(true),
+                    iconOffset(arrayOf(0f, -8f))
+                )
+        )
     }
 
 
@@ -178,7 +215,9 @@ class MapFragment : Fragment(), PermissionsListener {
             // Show the Feature in the TextView to show that the icon is based on the ICON_PROPERTY key/value
             placeName.text = features[0].getStringProperty("title")
             val place = mapPlaces.get(features[0].getStringProperty("id"))
-            (activity as HomeActivity).chosenPlace = place
+            if (!isProvider){
+                (activity as HomeActivity).chosenPlace = place
+            }
             true
         } else {
             false
