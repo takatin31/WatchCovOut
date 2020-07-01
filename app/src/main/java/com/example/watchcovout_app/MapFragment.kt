@@ -46,6 +46,7 @@ class MapFragment : Fragment(), PermissionsListener {
     private lateinit var mContext: Context
     var detached : Boolean = true
     val listPlaces = arrayListOf<Place>()
+    val mapPlaces = hashMapOf<String, Place>()
     var features = arrayListOf<Feature>()
     private val PROPERTY_SELECTED = "selected"
     private val LAYER_ID = "places"
@@ -119,6 +120,7 @@ class MapFragment : Fragment(), PermissionsListener {
 
                         val place = Place(idPlace, titlePlace, latLng, chunk, nbrPlaces, type)
                         listPlaces.add(place)
+                        mapPlaces.put(idPlace, place)
 
                         val geometry = Point.fromLngLat(latLng.longitude, latLng.latitude)
                         val feature : Feature = Feature.fromGeometry(geometry)
@@ -175,7 +177,8 @@ class MapFragment : Fragment(), PermissionsListener {
         return if (features.isNotEmpty()) {
             // Show the Feature in the TextView to show that the icon is based on the ICON_PROPERTY key/value
             placeName.text = features[0].getStringProperty("title")
-            (activity as HomeActivity).chosenPlaceId = features[0].getStringProperty("id")
+            val place = mapPlaces.get(features[0].getStringProperty("id"))
+            (activity as HomeActivity).chosenPlace = place
             true
         } else {
             false

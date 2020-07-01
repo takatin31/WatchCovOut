@@ -19,7 +19,10 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
+            android:clickable="false"
+            android:editable="false"
             android:ems="10"
+            android:focusable="false"
             android:inputType="textPersonName"
             android:text="Select date" />
 

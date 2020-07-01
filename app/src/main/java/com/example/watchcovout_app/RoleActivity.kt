@@ -98,6 +98,7 @@ class RoleActivity : AppCompatActivity() {
                     val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
                     val editor = pref.edit()
                     editor.putBoolean("valid", true)
+                    editor.putString("nid", nid)
                     editor.commit()
 
                     val intent = Intent(this, HomeActivity::class.java)
