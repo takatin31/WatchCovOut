@@ -5,4 +5,8 @@
     <string name="shared_pref">user_data</string>
     <string name="host">https://watchcovout-api.herokuapp.com</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYWxpMzEiLCJhIjoiY2s4cHRucGg1MDRkOTNkbXRtZzQ0b2QxdiJ9.IbO-ne07C-2YP_Wlj1BkOg</string>
+
 </resources>
