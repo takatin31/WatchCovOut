@@ -88,12 +88,12 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
 
-            notificationIconView.setOnClickListener {
-                val intent = Intent(this, NotificationActivity::class.java)
-                startActivity(intent)
-            }
         }
 
+        notificationIconView.setOnClickListener {
+            val intent = Intent(this, NotificationActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     fun visitPlace(

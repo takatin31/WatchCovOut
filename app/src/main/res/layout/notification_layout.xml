@@ -19,7 +19,6 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="20dp"
-            android:contentDescription="@string/notification_example"
             app:srcCompat="@drawable/circle_button" />
 
         <TextView
@@ -31,9 +30,9 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:layout_toEndOf="@id/notificationSeenView"
-            android:fontFamily="@font/almarai_regular"
-            android:text="@string/notification_example"
-            android:textColor="@color/darkblue"
+            android:fontFamily="@font/roboto_medium"
+            android:text="This is a notification"
+            android:textColor="#000"
             android:textDirection="rtl"
             android:textSize="18sp" />
 
@@ -47,10 +46,9 @@
             android:layout_marginBottom="5dp"
             android:layout_toStartOf="@id/notificationDateView"
             android:layout_toEndOf="@id/notificationSeenView"
-            android:contentDescription="@string/description"
-            android:fontFamily="@font/almarai_bold"
-            android:text="@string/notification_example"
-            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_medium"
+            android:text="This is a notification"
+            android:textColor="#000"
             android:textDirection="rtl"
             android:textSize="16sp" />
 
@@ -63,8 +61,8 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:text="@string/date_example"
-            android:textColor="@color/black"
+            android:text="2020-07-01"
+            android:textColor="#000"
             android:textDirection="ltr" />
 
     </RelativeLayout>

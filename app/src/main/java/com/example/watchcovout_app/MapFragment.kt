@@ -87,7 +87,7 @@ class MapFragment : Fragment(), PermissionsListener {
                 val exist = handleClickIcon(mapboxMap.projection.toScreenLocation(it))
                 if (!exist && isProvider){
                     selectedPlace = it
-
+                    (activity as ServiceActivity).selectedPlace = it
                     addMarker(mapboxMap.style!!, it)
                 }
                 true

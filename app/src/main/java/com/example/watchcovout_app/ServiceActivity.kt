@@ -11,7 +11,6 @@ import com.android.volley.Response
 import com.android.volley.toolbox.Volley
 import com.google.firebase.auth.FirebaseAuth
 import com.mapbox.mapboxsdk.geometry.LatLng
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_service.*
 import kotlinx.android.synthetic.main.activity_service.confirm_btn
 import kotlinx.android.synthetic.main.activity_service.dialogLayout
@@ -63,7 +62,7 @@ class ServiceActivity : AppCompatActivity() {
             transaction.commit()
         }
 
-        confirm_btn.setOnClickListener {
+        continue_btn.setOnClickListener {
             if (selectedPlace != null){
                 flouLayout.visibility = View.GONE
                 dialogLayout.visibility = View.GONE
@@ -89,11 +88,11 @@ class ServiceActivity : AppCompatActivity() {
                 val resp = String(it.data)
                 val jsonResp = JSONObject(resp)
                 if (jsonResp.has("error")){
-                    Toast.makeText(this, "National ID Already exists", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "There were a problem", Toast.LENGTH_SHORT).show()
 
 
-                }else if (jsonResp.has("message")){
-
+                }else if (jsonResp.has("msg")){
+                    Toast.makeText(this, "Place was created succefully", Toast.LENGTH_SHORT).show()
                 }
 
             },
