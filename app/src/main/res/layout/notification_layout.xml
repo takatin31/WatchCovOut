@@ -9,7 +9,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layoutDirection="rtl"
         android:padding="10dp">
 
         <ImageView
@@ -33,7 +32,6 @@
             android:fontFamily="@font/roboto_medium"
             android:text="This is a notification"
             android:textColor="#000"
-            android:textDirection="rtl"
             android:textSize="18sp" />
 
         <TextView
@@ -49,7 +47,6 @@
             android:fontFamily="@font/roboto_medium"
             android:text="This is a notification"
             android:textColor="#000"
-            android:textDirection="rtl"
             android:textSize="16sp" />
 
         <TextView

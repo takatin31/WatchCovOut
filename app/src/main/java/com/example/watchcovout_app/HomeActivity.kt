@@ -97,7 +97,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun visitPlace(
-        selectedDate: String,
+        date: String,
         chosenPlaceId: String,
         time: String,
         nid: String?
@@ -119,6 +119,11 @@ class HomeActivity : AppCompatActivity() {
                 }else if (jsonResp.has("msg")){
 
                     Toast.makeText(this, "The request was succefull", Toast.LENGTH_SHORT).show()
+                    layout1.visibility = View.VISIBLE
+                    layout2.visibility = View.GONE
+                    chosenPlace = null
+                    selectedDate = ""
+                    page2 = false
                 }
 
             },
@@ -138,7 +143,7 @@ class HomeActivity : AppCompatActivity() {
                 val dataOutputStream = DataOutputStream(byteArrayOutputStream)
                 val jsonUser = JSONObject()
                 jsonUser.put("nid", nid)
-                jsonUser.put("date", selectedDate)
+                jsonUser.put("date", date)
                 jsonUser.put("time", time)
                 dataOutputStream.writeBytes(jsonUser.toString())
                 return byteArrayOutputStream.toByteArray()

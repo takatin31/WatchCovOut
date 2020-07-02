@@ -36,13 +36,17 @@ class ProfileActivity : AppCompatActivity() {
         }
 
         overCrowdedBtn.setOnClickListener {
+
+        }
+
+        confirmCaseBtn.setOnClickListener {
             val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
-            val uid = pref.getString("userUID", "")
-            if (uid == ""){
-                var postURL: String = "${resources.getString(R.string.host)}/api/v0/users/$uid?isConfirmedCase=true"
+            val nid = pref.getString("nid", "")
+            if (nid != ""){
+                var postURL: String = "${resources.getString(R.string.host)}/api/v0/users/$nid?isConfirmedCase=true"
 
                 val request = object : FileUploadRequest(
-                    Method.PUT,
+                    Method.POST,
                     postURL,
                     Response.Listener {
 
@@ -50,7 +54,7 @@ class ProfileActivity : AppCompatActivity() {
 
                     },
                     Response.ErrorListener {
-                        Toast.makeText(this, "There were a problem", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this, "There were a problem", Toast.LENGTH_SHORT).show()
                         Log.i("error", "error while posting comment")
                         Log.i("error", it.toString())
                     }
@@ -59,10 +63,6 @@ class ProfileActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this, "There were a problem", Toast.LENGTH_SHORT).show()
             }
-        }
-
-        confirmCaseBtn.setOnClickListener {
-
         }
 
 
