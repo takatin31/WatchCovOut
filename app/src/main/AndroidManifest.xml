@@ -47,6 +47,15 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".NotificationReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="NEWNOTIFICATIONRECEIVED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
