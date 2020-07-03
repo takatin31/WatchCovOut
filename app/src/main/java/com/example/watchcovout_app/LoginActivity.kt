@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
 import com.facebook.AccessToken
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
@@ -90,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
 
             currentUser.getIdToken(false).addOnSuccessListener {
                 if (it.claims.containsKey("roles")){
+                    setNid(currentUser.uid)
                     val intent = Intent(this, HomeActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -156,7 +160,7 @@ class LoginActivity : AppCompatActivity() {
                             }
                             editor.putBoolean("valid", true)
                             editor.commit()
-
+                            setNid(user.uid)
                             val intent = Intent(this, HomeActivity::class.java)
                             startActivity(intent)
                             finish()
@@ -177,6 +181,35 @@ class LoginActivity : AppCompatActivity() {
                 }
 
             }
+    }
+
+    fun setNid(uidUser : String){
+        val urlData = "${resources.getString(R.string.host)}/api/v0/users/"
+
+        // Request a string response from the provided URL.
+        val jsonRequestData = JsonArrayRequest(
+            Request.Method.GET, urlData, null,
+            Response.Listener { response ->
+                if (response.length() == 0){
+                }else{
+                    for (i in 0 until response.length()){
+                        val item = response.getJSONObject(i)
+                        val nid = item.getString("nid")
+                        val uid = item.getString("uid")
+                        if (uid == uidUser){
+                            val pref = getSharedPreferences(resources.getString(R.string.shared_pref),0)
+                            val editor = pref.edit()
+                            editor.putString("nid", nid)
+                            editor.commit()
+                            break
+                        }
+                    }
+                }
+            },
+            Response.ErrorListener {
+                Log.d("Error", "Request error") })
+
+        RequestHandler.getInstance(this).addToRequestQueue(jsonRequestData)
     }
 
     private fun handleFacebookAccessToken(token: AccessToken) {
